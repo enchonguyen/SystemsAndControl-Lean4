@@ -1,13 +1,30 @@
-# Lean4
+# Systems and Control Theory in Lean 4
 
-## GitHub configuration
+The purpose of this repository is to collect formalised definitions and theorems in the field of systems and control theory.
 
-To set up your new GitHub repository, follow these steps:
+## Contents
 
-* Under your repository name, click **Settings**.
-* In the **Actions** section of the sidebar, click "General".
-* Check the box **Allow GitHub Actions to create and approve pull requests**.
-* Click the **Pages** section of the settings sidebar.
-* In the **Source** dropdown menu, select "GitHub Actions".
+### Linear Time-Invariant Systems in Discrete Time
 
-After following the steps above, you can remove this section from the README file.
+#### `Solution.lean`
+Consider the system
+$$
+\begin{align}
+x(t+1) &= A x(t) + B u(t), \\
+y(t) &= Cx(t) + Du(t).
+\end{align}
+$$
+The solution to the initial value problem for a given $x(0) = x_0$ and $u$ is
+$$
+\begin{align*}
+x(t; x_0, u) &= A^t x_0 + \sum_{i = 0}^{t - 1} A^{t - i - 1} B u(i), \\
+y(t; x_0, u) &= C A^t x_0 + \sum_{i = 0}^{t - 1} C A^{t - i - 1} B u(i) + D u(t).
+\end{align*}
+$$
+
+#### `AsymptoticStability.lean` and `LyapunovStability.lean`
+The autonomous system $x(t+1) = Ax(t)$ is asymptotically stable if $x(t) \to 0$ as $t \to \infty$ for all initial conditions $x(0)$. The following are equivalent:
+- the system $x(t+1) = Ax(t)$, where $A$ is a complex square matrix, is asymptotically stable;
+- $\lim_{k \to \infty} A^k = 0$;
+- the eigenvalues of $A$ have modulus less than 1;
+- there exists a positive definite $P \succ 0$ such that $P - A^H P A \succ 0$.
