@@ -216,7 +216,7 @@ theorem dotProduct_tsum
       rw [Summable.tsum_mul_left]
       -- (hf : Summable f) : ∑' (i : ι), a * f i = a * ∑' (i : ι), f i
       · -- ⊢ a n' * (∑' (b : ι), f b) n' = a n' * ∑' (b : ι), f b n'
-        simp_rw [tsum_apply hf]
+        rw [tsum_apply hf]
       · -- ⊢ Summable fun b ↦ f b n'
         apply Pi.summable.mp hf
   · -- ⊢ ∀ i ∈ univ, Summable fun b ↦ a i * f b i
@@ -249,7 +249,7 @@ theorem tsum_dotProduct
       rw [Summable.tsum_mul_right]
       -- (hf : Summable f) : ∑' (i : ι), f i * a = (∑' (i : ι), f i) * a
       · -- ⊢ (∑' (b : ι), f b) n' * a n' = (∑' (b : ι), f b n') * a n'
-        simp_rw [tsum_apply hf]
+        rw [tsum_apply hf]
       · -- ⊢ Summable fun b ↦ f b n'
         apply Pi.summable.mp hf
   · -- ⊢ ∀ i ∈ univ, Summable fun b ↦ f b i * a i
@@ -395,7 +395,7 @@ theorem mulVec_tsum
       rw [Summable.tsum_mul_left]
       -- (hf : Summable f) : ∑' (i : ι), a * f i = a * ∑' (i : ι), f i
       · -- ⊢ a m' n' * (∑' (b : ι), f b) n' = a m' n' * ∑' (b : ι), f b n'
-        simp_rw [tsum_apply hf]
+        rw [tsum_apply hf]
       · -- ⊢ Summable fun b ↦ f b n'
         apply Pi.summable.mp hf
   · -- ⊢ ∀ i ∈ univ, Summable fun b ↦ a m' i * f b i
@@ -435,7 +435,7 @@ theorem tsum_vecMul
       rw [Summable.tsum_mul_right]
       -- (hf : Summable f) : ∑' (i : ι), f i * a = (∑' (i : ι), f i) * a
       · -- ⊢ (∑' (b : ι), f b) n' * a n' m' = (∑' (b : ι), f b n') * a n' m'
-        simp_rw [tsum_apply hf]
+        rw [tsum_apply hf]
       · -- ⊢ Summable fun b ↦ f b n'
         apply Pi.summable.mp hf
   · -- ⊢ ∀ i ∈ univ, Summable fun b ↦ f b i * a i m'
